@@ -61,7 +61,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   admin_username      = "josuazure"
   admin_ssh_key {
     username   = "josuazure"
-    public_key = file("${path.root}/.ssh/id_rsa.pub")
+    public_key = file("~/.ssh/id_rsa.pub")
   }
 
   os_disk {
@@ -72,7 +72,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "20.04-LTS"
+    sku       = "18.04-LTS"
     version   = "latest"
   }
 }
