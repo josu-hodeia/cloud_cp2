@@ -1,0 +1,29 @@
+- name: Crear directorio de servicio
+  file:
+    path: /etc/systemd/system
+    state: directory
+
+- name: Copiar el servicio de Podman
+  copy:
+    dest: /etc/systemd/system/app.service
+    content: |
+      [Unit]
+      Description=Aplicación en Podman
+      After=network.target
+
+      [Service]
+      ExecStart=/usr/bin/podman run -d --name josubartolome_cp2 -p 80:80 nginx
+      Restart=always
+
+      [Install]
+      WantedBy=multi-user.target
+
+- name: Recargar systemd
+  systemd:
+    daemon_reload: yes
+
+- name: Habilitar e iniciar el servicio
+  systemd:
+    name: app
+    state: started
+    enabled: yes

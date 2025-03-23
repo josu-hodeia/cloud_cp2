@@ -68,7 +68,6 @@ resource "azurerm_linux_virtual_machine" "vm" {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
-
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
@@ -76,3 +75,11 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = "latest"
   }
 }
+resource "azurerm_container_registry" "acr" {
+  name                = "acrjosubartcp2"
+  resource_group_name = azurerm_resource_group.caso_practico_2.name
+  location            = azurerm_resource_group.caso_practico_2.location
+  sku                 = "Basic"
+  admin_enabled       = true
+}
+

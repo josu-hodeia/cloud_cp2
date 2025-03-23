@@ -1,0 +1,6 @@
+- name: Configuración de la VM en Azure
+  hosts: web
+  become: true
+  roles:
+    - common
+    - podman

@@ -1,0 +1,16 @@
+- name: Desplegar aplicación en AKS
+  hosts: localhost
+  tasks:
+    - name: Copiar archivos de Kubernetes
+      copy:
+        src: ./kubernetes/
+        dest: /tmp/kubernetes/
+
+    - name: Aplicar configuración de almacenamiento
+      command: kubectl apply -f /tmp/kubernetes/storage.yml
+
+    - name: Aplicar el deployment
+      command: kubectl apply -f /tmp/kubernetes/deployment.yml
+
+    - name: Aplicar el servicio
+      command: kubectl apply -f /tmp/kubernetes/service.yml
