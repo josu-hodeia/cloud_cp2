@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: josubartolome_cp2-service
+  name: josu-cp2-service
 spec:
   type: LoadBalancer
   selector:
-    app: josubartolome_cp2
+    app: josu-cp2-app
   ports:
   - protocol: TCP
     port: 80

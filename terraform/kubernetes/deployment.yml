@@ -1,21 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: josubartolome_cp2
-  labels:
-    app: josubartolome_cp2
+  name: josu-cp2-despliegue
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: josubartolome_cp2
+      app: josu-cp2-app
   template:
     metadata:
       labels:
-        app: josubartolome_cp2
+        app: josu-cp2-app
     spec:
       containers:
-      - name: josubartolome_cp2
+      - name: josu-cp2-container
         image: acrcasopractico.azurecr.io/josubartolome_cp2:casopractico2
         ports:
         - containerPort: 80
